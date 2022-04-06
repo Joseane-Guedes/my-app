@@ -5,6 +5,9 @@
   border-radius: 10px;
   padding: 5px;
   margin-bottom: 1.5em;
+  padding-top: 15px;
+  margin-top: 15px;
+  border: 2px solid #8ec5fc;
 }
 
 .search input {

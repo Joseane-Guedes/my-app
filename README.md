@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# React Hooks Notes
+- Conceito : basicamente são uma forma de escrever os componentes react de uma forma menos verbosa e mais perfomatica. Sintaxe muito simples, melhor do que classes.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+São funções que permitem conectar os recursos de estados e ciclos de vida do React a partir de componentes funcionais. Normalmente os Hooks iniciam com a palavra use por convenção. Exemplos de hooks: useState, useEffect.
 
-## Available Scripts
+# useEffect
+Da acesso a gente utilizar os ciclos de vida do componente: componentDidMount(carrega info qdo o componente for montado em tela), componentDidUpdate e componentWillMount.
+Fases dos Ciclos de Vida em React
+O ciclo de vida de um componente possui três fases:
 
-In the project directory, you can run:
+- Montagem: A-componentWillMount; B-componentDidMount C-componentWillMount;
+- Atualização: 
+- Desmontagem: 
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ Ao contrário de componentDidMount, componentDidUpdate e componentWillMount a função passada para useEffect dispara após a renderização, durante o evento adiado. Isto torna o useEffect adequado para os muitos efeitos colaterais comuns, como a criação de assinaturas e manipuladores de eventos, porque a maioria dos tipos de trabalho não deve bloquear o navegador ao atualizar a tela.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Resumo:
+- UseEffect serve basicamente para disparar uma funcao quando algo acontecer na minha aplicação. Algo acontecer pode ser, por exemplo, "uma variavel mudou", e se essa variavel mudou, eu quero conseguir avisar alguma API que houve mudança nela ou disparar alguma função dentro do meu sistema. 
 
-### `yarn test`
+A funcao abaixo recebe dois parametros: 1- Qual funcao quero executar; 2- Qdo quero executar a função?
+[]  - chama-se dependencias. Quais sao as dependencias ou informações? Se passar vazio, a função, vai executar uma unica vez assim que o componente for exibido em tela. Por que? como esta vazio, nao existe nada que quando alterar vai executar a função novamente.
+Alerta: Cuidado. Se esquecer de passar a dependencia [], a função entra em loop eterno.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+useEffect (() => {
 
-### `yarn build`
+}, [])
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+https://www.notion.so/Chapter-1-Joseane-d1ed6f9d793f4c0f9aad022694378b4c?p=33a0f6ecf6e64cff81c4ab1ea0898b5f
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# useState
 
-### `yarn eject`
+Estado sao como variaveis especiais que o react observa e monitora. Toda vez que o valor dessas variaveis mudarem, aí sim que vai renderizar ou exibir o conteudo do componente em tela de novo. Ou seja, nao precisa ficar olhando para todas as variaveis do sistema procurando para saber se algo mudou ou não, ele vai olhar apenas para as variaveis do estado. Toda vez que o estado for alterado, vai exibir o conteudo do componente novamente.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Estado são variáveis que o React monitora e, toda vez que tiver alguma alteração nestas variáveis, o componente que utiliza essa variável vai ser renderizado (atualizado) em tela novamente;
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://www.notion.so/Chapter-1-Joseane-d1ed6f9d793f4c0f9aad022694378b4c?p=34372f9ac38e40cf855e84930ce73738

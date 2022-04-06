@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(#e0c3fc, #8ec5fc, #ba7af8);
+  background: #1A1D23;
 }
 
 .container {
@@ -38,6 +38,8 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  color: #FF57B2;
+  font-size: 1.5rem;
 }
 
 .todo-item + .todo-item {
@@ -49,26 +51,49 @@ body {
 .new-item {
   display: flex;
   margin: 0;
+  align-items: center;
   justify-content: space-between;
+  
 }
 
 .lista {
   text-align: center;
+  color: #FF57B2;
+  
 }
 
 .todo-form__input {
   width: 75%;
   padding: 24px;
   height: 20px;
-  background-color:#DBC2CF;
+
   border-radius: 24px;
   border: 0px;
   outline: none;
   margin-right: 3%;
-  border: 4px solid #8ec5fc;
+  border: 2px solid #8ec5fc;
 }
 
 button {
+  display: inline-block;
+  padding: 0.7em 0.7em;
+  font-size: 0.8em;
   cursor: pointer;
-  border-radius: 24px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #FF57B2;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  font-size: 1rem;
+}
+
+.button:hover {background-color: #8ec5fc}
+
+.button:active {
+  background-color: #8ec5fc;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
