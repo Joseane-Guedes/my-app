@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #1A1D23;
+  background: #1a1d23;
 }
 
 .container {
@@ -38,7 +38,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  color: #FF57B2;
+  color: #ff57b2;
   font-size: 1.5rem;
 }
 
@@ -53,13 +53,11 @@ body {
   margin: 0;
   align-items: center;
   justify-content: space-between;
-  
 }
 
-.lista {
+.list {
   text-align: center;
-  color: #FF57B2;
-  
+  color: #ff57b2;
 }
 
 .todo-form__input {
@@ -83,14 +81,16 @@ button {
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #FF57B2;
+  background-color: #ff57b2;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
   font-size: 1rem;
 }
 
-.button:hover {background-color: #8ec5fc}
+.button:hover {
+  background-color: #8ec5fc;
+}
 
 .button:active {
   background-color: #8ec5fc;

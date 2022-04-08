@@ -1,64 +1,60 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import Search from "./Components/Search";
+import InputSearch from "./Components/InputSearch";
 
 function App() {
-  let [lista, setLista] = useState([]);
-  const [search, setSearch] = useState("");
-  let [novoItem, setNovoItem] = useState("");
+  let [todoList, setTodoList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  let [newItem, setNewItem] = useState("");
 
-  useEffect(() => {
-    setLista(["Tarefa1", "Tarefa2", "Tarefa3", "Tarefa4"]);
-  }, []);
 
-  function adicionarNovoItem() {
-    if (novoItem.length <= 0) {
-      alert("Por favor, digite no campo 'Tarefa'");
+  function addNewItem () {
+    if (newItem.length <= 0) {
+      alert("Please, add a new task");
       return;
     }
 
-    let itemIndex = lista.indexOf(novoItem);
+    let itemIndex = todoList.indexOf(newItem);
     if (itemIndex >= 0) {
-      alert("Tarefa repetida");
+      alert("Repeated task");
       return;
     }
 
-    setLista([...lista, novoItem]);
-    setNovoItem("");
+    setTodoList([...todoList, newItem]);
+    setNewItem("");
   }
 
-  function deletarItem(index) {
-    let tmpArray = [...lista];
+  function delItem(index) {
+    let tmpArray = [...todoList];
     tmpArray.splice(index, 1);
 
-    setLista(tmpArray);
+    setTodoList(tmpArray);
   }
 
-  const filteredList = lista.filter((item) =>
-    item.toLowerCase().includes(search.toLocaleLowerCase())
+  const filteredList = todoList.filter((item) =>
+    item.toLowerCase().includes(searchTerm.toLocaleLowerCase())
   );
 
   return (
     <div className="container">
-      <h1 className="lista"> Lista de tarefa</h1>
-
+      <h1 className="list"> ToDo List </h1>
+      <InputSearch setSearch={setSearchTerm} search={searchTerm} />
       <div className="new-item">
         <input
           className="todo-form__input"
-          placeholder="Adicionar Tarefa"
-          value={novoItem}
-          onChange={(value) => setNovoItem(value.target.value)}
+          placeholder="Create a new task"
+          value={newItem}
+          onChange={(value) => setNewItem(value.target.value)}
           type="text"
         />
-
-        <button onClick={() => adicionarNovoItem()}> Salvar </button>
+        <button onClick={() => addNewItem ()}> Save </button>
       </div>
-      <Search setSearch={setSearch} search={search} />
+
       <ul className="todo-list">
         {filteredList.map((item, index) => (
           <li key={index} className="todo-item">
             {item}
-            <button onClick={() => deletarItem(index)}>Deletar</button>
+            <button onClick={() => delItem(index)}>Delete</button>
           </li>
         ))}
       </ul>

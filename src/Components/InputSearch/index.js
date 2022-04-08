@@ -1,8 +1,10 @@
-import React from "react";
 import { MdSearch } from "react-icons/md";
-import "./styles.css";
+import "./styles.css"; 
 
-export default function Search({ setSearch, search }) {
+
+
+
+export default function InputSearch({  search, setSearch }) {
   return (
     <div className="search">
       <MdSearch className="search-icons" size="1.3em" />
@@ -10,8 +12,10 @@ export default function Search({ setSearch, search }) {
         onChange={(event) => setSearch(event.target.value)}
         value={search}
         type="text"
-        placeholder="Buscar Tarefa..."
+        placeholder="Search your task..."
       />
     </div>
   );
 }
+
+/* Um evento onChange é disparado quando os valores são inseridos na entrada */
