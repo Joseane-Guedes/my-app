@@ -22,78 +22,7 @@ body {
   border-radius: 5px;
 }
 
-.todo-list {
-  list-style: none;
-  margin: 10px 0 0;
-  padding: 5px;
-  height: 300px;
-  overflow: auto;
-}
-
-.todo-list::-webkit-scrollbar {
-  display: none;
-}
-
-.todo-item {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: #ff57b2;
-  font-size: 1.5rem;
-}
-
-.todo-item + .todo-item {
-  margin-top: 5px;
-  border-top: 1px solid #d9d9d9;
-  padding-top: 5px;
-}
-
-.new-item {
-  display: flex;
-  margin: 0;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .list {
   text-align: center;
   color: #ff57b2;
-}
-
-.todo-form__input {
-  width: 75%;
-  padding: 24px;
-  height: 20px;
-
-  border-radius: 24px;
-  border: 0px;
-  outline: none;
-  margin-right: 3%;
-  border: 2px solid #8ec5fc;
-}
-
-button {
-  display: inline-block;
-  padding: 0.7em 0.7em;
-  font-size: 0.8em;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #ff57b2;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-  font-size: 1rem;
-}
-
-.button:hover {
-  background-color: #8ec5fc;
-}
-
-.button:active {
-  background-color: #8ec5fc;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
 }
