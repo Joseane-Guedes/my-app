@@ -1,9 +1,9 @@
 import { useState } from "react";
-import AddTasks from "./Components/AddTasks";
+import AddToDo from "./Components/AddToDo";
 import InputSearch from "./Components/InputSearch";
 import TodoList from "./Components/TodoList";
+/* import Checkbox from "./Components/Checkbox"; */
 import "./App.css";
-
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -13,14 +13,14 @@ function App() {
     <div className="container">
       <h1 className="list"> To Do List </h1>
       <InputSearch todoList={todoList} setFilteredList={setFilteredList} />
-      <AddTasks todoList={todoList} setTodoList={setTodoList} />
+      <AddToDo todoList={todoList} setTodoList={setTodoList} />
       <TodoList
         filteredList={filteredList}
         setTodoList={setTodoList}
         todoList={todoList}
       />
-
-</div>
+     {/*  <Checkbox /> */}
+    </div>
   );
 }
 export default App;

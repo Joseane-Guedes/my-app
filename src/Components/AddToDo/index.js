@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./styles.css";
 
-export default function AddTasks({ todoList, setTodoList }) {
+export default function AddToDo({ todoList, setTodoList }) {
   const [newItem, setNewItem] = useState("");
 
   function addNewItem() {
@@ -33,3 +33,4 @@ export default function AddTasks({ todoList, setTodoList }) {
     </div>
   );
 }
+
