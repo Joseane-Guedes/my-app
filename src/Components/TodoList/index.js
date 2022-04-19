@@ -15,10 +15,14 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
       <ul className="todo-list">
         {filteredList.length > 0
           ? filteredList.map((item, index) => (
-              <li key={item} className="todo-item">
+              <li
+                key={item}
+                className="todo-item"
+                style={{ textDecoration: checked ? "line-through" : "none" }}
+              >
                 {item}
                 <div>
-                  <span >{item.text}</span>
+                  <span>{item.text}</span>
 
                   <input
                     className="checkbox-item"
