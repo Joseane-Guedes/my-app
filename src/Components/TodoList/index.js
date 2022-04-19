@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./styles.css";
 
 export default function TodoList({ filteredList, todoList, setTodoList }) {
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState([]);
 
   function delItem(index) {
     let tmpArray = [...todoList];
@@ -15,19 +15,58 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
       <ul className="todo-list">
         {filteredList.length > 0
           ? filteredList.map((item, index) => (
-              <li key={item} className="todo-item">
+              <li
+                key={item}
+                className="todo-item"
+                style={{
+                  textDecoration: checked.includes(item)
+                    ? "line-through"
+                    : "none",
+                }}
+              >
                 {item}
                 <div>
-                  <span >{item.text}</span>
+                  <span>{item.text}</span>
 
                   <input
                     className="checkbox-item"
                     type="checkbox"
-                    defaultChecked={false}
-                    onChange={() => setChecked(!checked)}
+                    defaultChecked={checked.includes(item)}
+                    onChange={() =>
+                      setChecked((prev) => {
+                        if (prev.includes(item)) {
+                          const data = [...prev];
+
+                          const i = data.findIndex((i) => i === item);
+                          data.splice(i, 1);
+
+                          return [...data];
+                        }
+
+                        return [...prev, item];
+                      })
+                    }
                   />
 
-                  <button onClick={() => delItem(index)}> 🗑️ </button>
+                  <button
+                    onClick={() => {
+                      setChecked((prev) => {
+                        if (prev.includes(item)) {
+                          const data = [...prev];
+
+                          const i = data.findIndex((i) => i === item);
+                          data.splice(i, 1);
+
+                          return [...data];
+                        }
+                        return [...prev];
+                      });
+
+                      delItem(index);
+                    }}
+                  >
+                    🗑️
+                  </button>
                 </div>
               </li>
             ))
@@ -38,6 +77,11 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
 }
 
 /* 
+O método splice() altera o conteúdo de uma lista, adicionando novos elementos enquanto remove elementos antigos.
+
+O método includes() determina se um array contém um determinado elemento, retornando true ou false apropriadamente.
+
+O método prev() retorna o elemento irmão anterior do elemento selecionado.
 
 https://www.youtube.com/watch?v=4zM2DgprRPw
 
