@@ -33,17 +33,19 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
                     type="checkbox"
                     defaultChecked={checked.includes(item)}
                     onChange={() =>
-                      setChecked((prev) => {
-                        if (prev.includes(item)) {
-                          const data = [...prev];
+                      setChecked((previousState) => {
+                        if (previousState.includes(item)) {
+                          const data = [...previousState];
 
                           const i = data.findIndex((i) => i === item);
                           data.splice(i, 1);
 
                           return [...data];
                         }
-
-                        return [...prev, item];
+                        console.log("previousState ", previousState);
+                        console.log("newState", [...previousState, item]);
+                        return [...previousState, item];
+                        
                       })
                     }
                   />
@@ -81,7 +83,6 @@ O método splice() altera o conteúdo de uma lista, adicionando novos elementos 
 
 O método includes() determina se um array contém um determinado elemento, retornando true ou false apropriadamente.
 
-O método prev() retorna o elemento irmão anterior do elemento selecionado.
 
 https://www.youtube.com/watch?v=4zM2DgprRPw
 
