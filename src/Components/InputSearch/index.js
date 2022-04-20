@@ -23,9 +23,9 @@ export default function InputSearch({ todoList, setFilteredList }) {
       );
     } else {
       setFilteredList([]);
-    }
+    }    
 
-    
+
   }
 
   return (

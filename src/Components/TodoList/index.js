@@ -10,6 +10,7 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
     setTodoList(tmpArray);
   }
 
+
   return (
     <>
       <ul className="todo-list">
