@@ -2,7 +2,6 @@ import { useState } from "react";
 import AddToDo from "./Components/AddToDo";
 import InputSearch from "./Components/InputSearch";
 import TodoList from "./Components/TodoList";
-/* import Checkbox from "./Components/Checkbox"; */
 import "./App.css";
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
         setTodoList={setTodoList}
         todoList={todoList}
       />
-      {/*  <Checkbox /> */}
     </div>
   );
 }
