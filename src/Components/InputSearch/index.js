@@ -16,14 +16,16 @@ export default function InputSearch({ todoList, setFilteredList }) {
     }
 
     const newList = todoList.filter((item) =>
-  item.toLowerCase().includes(value.toLowerCase())
-)
+      item.toLowerCase().includes(value.toLowerCase())
+    );
 
-setFilteredList(newList);
+    setFilteredList(newList);
 
-if (newList.length === 0){
-  alert("Found nothing with the searched term. Try changing it or add a new task")
-}
+    if (newList.length === 0) {
+      alert(
+        "Found nothing with the searched term. Try changing it or add a new task"
+      );
+    }
 
     // if (value.length > 0) {
     //   setFilteredList(
@@ -34,8 +36,6 @@ if (newList.length === 0){
     // } else {
     //   setFilteredList([]);
     // }
-
-
   }
 
   return (
