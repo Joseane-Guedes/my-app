@@ -19,7 +19,7 @@ function App() {
         setTodoList={setTodoList}
         todoList={todoList}
       />
-     {/*  <Checkbox /> */}
+      {/*  <Checkbox /> */}
     </div>
   );
 }

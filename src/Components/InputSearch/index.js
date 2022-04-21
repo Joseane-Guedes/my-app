@@ -15,15 +15,25 @@ export default function InputSearch({ todoList, setFilteredList }) {
       return;
     }
 
-    if (value.length > 0) {
-      setFilteredList(
-        todoList.filter((item) =>
-          item.toLowerCase().includes(value.toLowerCase())
-        )
-      );
-    } else {
-      setFilteredList([]);
-    }    
+    const newList = todoList.filter((item) =>
+  item.toLowerCase().includes(value.toLowerCase())
+)
+
+setFilteredList(newList);
+
+if (newList.length === 0){
+  alert("Found nothing with the searched term. Try changing it or add a new task")
+}
+
+    // if (value.length > 0) {
+    //   setFilteredList(
+    //     todoList.filter((item) =>
+    //       item.toLowerCase().includes(value.toLowerCase())
+    //     )
+    //   );
+    // } else {
+    //   setFilteredList([]);
+    // }
 
 
   }
