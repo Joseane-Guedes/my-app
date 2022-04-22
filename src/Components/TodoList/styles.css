@@ -4,7 +4,6 @@
   --form-control-disabled: #959495;
 }
 
-
 .todo-list {
   list-style: none;
   margin: 10px 0 0;
@@ -28,7 +27,7 @@
   font-size: 1.5rem;
   overflow-wrap: break-word;
   cursor: pointer;
-} 
+}
 
 .todo-item + .todo-item {
   margin-top: 20px;
@@ -48,32 +47,22 @@ button {
   background-color: #8ec5fc;
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 9px rgba(0,0,0,0.3);
   font-size: 1rem;
+
+  transition: all 0.6s ease;
 }
 
-.checkbox-item { 
+button:active {
+  box-shadow: 0 2px rgba(0,0,0,0.5);
+}
+
+.checkbox-item {
   cursor: pointer;
   width: 5.15em;
   height: 1.5em;
  /*  text-decoration: line-through; */
 }
-
-/* .checked {
-  text-decoration: line-through;
-  https://www.w3schools.com/howto/howto_js_todolist.asp
-  https://contactmentor.com/checkbox-list-react-js-example/
-} */
-/* 
-input.checkbox-item{
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-} */
-
-/* .input.checked-item {
-  text-decoration: line-through;
-} */
 
 .checkbox {
   cursor: pointer;
@@ -89,3 +78,37 @@ input.checkbox-item{
   transform: translateY(4px);
 }
 
+.react-modal-overlay {
+  background-color: rgba(107, 72, 84, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-modal {
+  width: 500px;
+  height: 300px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 6px rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+
+.info-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #ff57b2;
+}
+
+.buttons-modal {
+  display: flex;
+  gap: 10px;
+}

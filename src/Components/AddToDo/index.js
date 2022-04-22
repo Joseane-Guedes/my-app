@@ -3,24 +3,27 @@ import "./styles.css";
 
 export default function AddToDo({ todoList, setTodoList }) {
   const [newItem, setNewItem] = useState("");
+  const [alertCreate, setAlertCreate] = useState("");
 
   function addNewItem() {
     if (newItem.length <= 0) {
-      alert("Please, add a new task");
+      setAlertCreate("Please, add a new task");
       return;
     }
 
     let itemIndex = todoList.indexOf(newItem);
     if (itemIndex >= 0) {
-      alert("Repeated task");
+      setAlertCreate("Repeated task");
       return;
     }
 
     setTodoList([...todoList, newItem]);
     setNewItem("");
+    setAlertCreate("");
   }
 
   return (
+    <>
     <div className="new-item">
       <input
         className="todo-form__input"
@@ -30,7 +33,10 @@ export default function AddToDo({ todoList, setTodoList }) {
         type="text"
       />
       <button onClick={() => addNewItem()}> Save </button>
+
     </div>
+    <p>{alertCreate}</p>
+    </>
   );
 }
 

@@ -1,17 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { MdSearch } from "react-icons/md";
 import "./styles.css";
 
 export default function InputSearch({ todoList, setFilteredList }) {
+  const [alertfind, setAlertFind] = useState('')
+
   useEffect(() => {
     setFilteredList(todoList);
   }, [todoList, setFilteredList]);
+
+
 
   function handleSearch(event) {
     const { value } = event.target;
 
     if (value.length <= 0) {
       setFilteredList(todoList);
+      setAlertFind('')
       return;
     }
 
@@ -22,7 +27,7 @@ export default function InputSearch({ todoList, setFilteredList }) {
     setFilteredList(newList);
 
     if (newList.length === 0) {
-      alert(
+      setAlertFind(
         "Found nothing with the searched term. Try changing it or add a new task"
       );
     }
@@ -39,6 +44,7 @@ export default function InputSearch({ todoList, setFilteredList }) {
   }
 
   return (
+    <>
     <div className="search">
       <MdSearch className="search-icons" size="1.3em" />
       <input
@@ -47,6 +53,9 @@ export default function InputSearch({ todoList, setFilteredList }) {
         placeholder="Search your task..."
       />
     </div>
+    <p>
+      {alertfind}</p>
+    </>
   );
 }
 /* Um evento onChange é disparado quando os valores são inseridos na entrada */

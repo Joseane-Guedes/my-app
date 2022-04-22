@@ -1,15 +1,26 @@
 import { useState } from "react";
 import "./styles.css";
 
+import ReactModal from "react-modal";
+
 export default function TodoList({ filteredList, todoList, setTodoList }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [checked, setChecked] = useState([]);
 
-  function delItem(index) {
+  function handleDelItem(index) {
     let tmpArray = [...todoList];
     tmpArray.splice(index, 1);
     setTodoList(tmpArray);
+    setModalIsOpen(false);
   }
 
+  function handleOpenModal() {
+    setModalIsOpen(true);
+  }
+
+  function handleCloseModal() {
+    setModalIsOpen(false);
+  }
 
   return (
     <>
@@ -46,24 +57,30 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
                         console.log("previousState ", previousState);
                         console.log("newState", [...previousState, item]);
                         return [...previousState, item];
-
                       })
                     }
                   />
 
-                  <button
-                    onClick={() => {
-                    delItem(index);
-                    }}
-                  >
-                    🗑️
-                  </button>
+                  <button onClick={handleOpenModal}>Delete</button>
                 </div>
               </li>
             ))
           : `No tasks to show`}
       </ul>
+      <ReactModal
+        overlayClassName="react-modal-overlay"
+        className="react-modal"
+        isOpen={modalIsOpen}
+        onRequestClose={handleCloseModal}
+      >
+        <div className="info-modal">
+          <h2>Are you sure you want to delete this task?</h2>
+          <div className="buttons-modal">
+            <button onClick={handleDelItem}>Yes</button>
+            <button onClick={handleCloseModal}>No</button>
+          </div>
+        </div>
+      </ReactModal>
     </>
   );
 }
-
