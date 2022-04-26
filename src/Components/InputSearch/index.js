@@ -3,20 +3,18 @@ import { MdSearch } from "react-icons/md";
 import "./styles.css";
 
 export default function InputSearch({ todoList, setFilteredList }) {
-  const [alertfind, setAlertFind] = useState('')
+  const [alertfind, setAlertFind] = useState("");
 
   useEffect(() => {
     setFilteredList(todoList);
   }, [todoList, setFilteredList]);
-
-
 
   function handleSearch(event) {
     const { value } = event.target;
 
     if (value.length <= 0) {
       setFilteredList(todoList);
-      setAlertFind('')
+      setAlertFind("");
       return;
     }
 
@@ -35,16 +33,15 @@ export default function InputSearch({ todoList, setFilteredList }) {
 
   return (
     <>
-    <div className="search">
-      <MdSearch className="search-icons" size="1.3em" />
-      <input
-        onChange={(event) => handleSearch(event)}
-        type="text"
-        placeholder="Search your task..."
-      />
-    </div>
-    <p>
-      {alertfind}</p>
+      <div className="search">
+        <MdSearch className="search-icons" size="1.3em" />
+        <input
+          onChange={(event) => handleSearch(event)}
+          type="text"
+          placeholder="Search your task..."
+        />
+      </div>
+      <p>{alertfind}</p>
     </>
   );
 }

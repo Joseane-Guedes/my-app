@@ -1,26 +1,40 @@
 import { useState } from "react";
+import ReactModal from "react-modal";
 import "./styles.css";
 
-import ReactModal from "react-modal";
-
 export default function TodoList({ filteredList, todoList, setTodoList }) {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [checked, setChecked] = useState([]);
+  const [selectedIndex, setSelectedIndex]  = useState (null)
 
-  function handleDelItem(index) {
+  // Modal.setAppElement('#root')
+
+  function deleteItemAtIndex() {
+
     let tmpArray = [...todoList];
-    tmpArray.splice(index, 1);
+    tmpArray.splice(selectedIndex, 1);
     setTodoList(tmpArray);
-    setModalIsOpen(false);
+    closeDeleteModal();
   }
 
-  function handleOpenModal() {
-    setModalIsOpen(true);
+  function openDeleteModal(index) {
+    setIsDeleteModalOpen(true);
+    setSelectedIndex(index)
+ }
+
+  function closeDeleteModal() {
+    setIsDeleteModalOpen(false);
   }
 
-  function handleCloseModal() {
-    setModalIsOpen(false);
-  }
+  // map = transformar um array em outro array.
+  // forEach = realiza loop no array sem retornar nada.
+
+  // filteredList.map((item, index) => {
+  //   console.log("Sou o item", item);
+  //   console.log("tipo", typeof item);
+  //   console.log("Sou index", index);
+  //   console.log("sou o item.text", item.text);
+  // });
 
   return (
     <>
@@ -36,10 +50,8 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
                     : "none",
                 }}
               >
-                {item}
+                {index} {item}
                 <div>
-                  <span>{item.text}</span>
-
                   <input
                     className="checkbox-item"
                     type="checkbox"
@@ -61,7 +73,7 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
                     }
                   />
 
-                  <button onClick={handleOpenModal}>Delete</button>
+                  <button onClick={() => openDeleteModal (index)}>Delete</button>
                 </div>
               </li>
             ))
@@ -70,14 +82,18 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
       <ReactModal
         overlayClassName="react-modal-overlay"
         className="react-modal"
-        isOpen={modalIsOpen}
-        onRequestClose={handleCloseModal}
+        isOpen={isDeleteModalOpen}
+        onRequestClose={closeDeleteModal}
+        aria={{
+          labelledby: "modal-title",
+          describedby: "modal-content",
+        }}
       >
         <div className="info-modal">
-          <h2>Are you sure you want to delete this task?</h2>
-          <div className="buttons-modal">
-            <button onClick={handleDelItem}>Yes</button>
-            <button onClick={handleCloseModal}>No</button>
+          <h1 id="modal-title">Are you sure you want to delete this task?</h1>
+          <div id="modal-content" className="buttons-modal">
+            <button onClick={() => deleteItemAtIndex()}>Yes</button>
+            <button onClick={closeDeleteModal}>No</button>
           </div>
         </div>
       </ReactModal>
