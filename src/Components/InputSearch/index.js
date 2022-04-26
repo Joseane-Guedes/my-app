@@ -31,16 +31,6 @@ export default function InputSearch({ todoList, setFilteredList }) {
         "Found nothing with the searched term. Try changing it or add a new task"
       );
     }
-
-    // if (value.length > 0) {
-    //   setFilteredList(
-    //     todoList.filter((item) =>
-    //       item.toLowerCase().includes(value.toLowerCase())
-    //     )
-    //   );
-    // } else {
-    //   setFilteredList([]);
-    // }
   }
 
   return (

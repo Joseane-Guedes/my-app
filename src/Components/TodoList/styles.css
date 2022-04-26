@@ -76,6 +76,7 @@ button:active {
   background-color: #8ec5fc;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+  padding: 0rem 1.25rem;
 }
 
 .react-modal-overlay {
@@ -91,6 +92,9 @@ button:active {
 }
 
 .react-modal {
+  margin: 1rem 0.25rem 0rem 0rem;
+  padding: 1rem 1.75rem 2rem 2rem;
+  border-radius: 10px;
   width: 500px;
   height: 300px;
   background-color: #fff;

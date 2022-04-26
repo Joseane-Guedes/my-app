@@ -17,3 +17,8 @@
     border: 2px solid #8ec5fc;
   }
 
+p {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  color: #ff57b2;
+}
