@@ -2,47 +2,51 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 import "./styles.css";
 
-export default function TodoList({ filteredList, todoList, setTodoList }) {
+export default function TodoList({ todoList, setTodoList }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const [checked, setChecked] = useState([]);
-  const [selectedIndex, setSelectedIndex]  = useState (null)
-
-  // Modal.setAppElement('#root')
 
   function deleteItemAtIndex() {
+    let temporaryTodoListArray = [...todoList];
+    let temporaryCheckedArray = [...checked];
+    const deletedTodo = todoList[selectedIndex];
 
-    let tmpArray = [...todoList];
-    tmpArray.splice(selectedIndex, 1);
-    setTodoList(tmpArray);
+    setChecked((prevChecked) =>
+      prevChecked.filter((todo) => deletedTodo !== todo)
+    );
+
+    let hasInChecked =
+      checked.indexOf(todoList[selectedIndex]) !== -1 &&
+      checked.indexOf(todoList[selectedIndex]);
+
+    temporaryTodoListArray.splice(selectedIndex, 1);
+
+    if (hasInChecked) {
+      temporaryCheckedArray.splice(hasInChecked, 1);
+      setChecked(temporaryCheckedArray);
+    }
+
+    setTodoList(temporaryTodoListArray);
     closeDeleteModal();
   }
 
   function openDeleteModal(index) {
     setIsDeleteModalOpen(true);
-    setSelectedIndex(index)
- }
+    setSelectedIndex(index);
+  }
 
   function closeDeleteModal() {
     setIsDeleteModalOpen(false);
   }
 
-  // map = transformar um array em outro array.
-  // forEach = realiza loop no array sem retornar nada.
-
-  // filteredList.map((item, index) => {
-  //   console.log("Sou o item", item);
-  //   console.log("tipo", typeof item);
-  //   console.log("Sou index", index);
-  //   console.log("sou o item.text", item.text);
-  // });
-
   return (
     <>
       <ul className="todo-list">
-        {filteredList.length > 0
-          ? filteredList.map((item, index) => (
+        {todoList.length > 0
+          ? todoList.map((item, index) => (
               <li
-                key={item}
+                key={index}
                 className="todo-item"
                 style={{
                   textDecoration: checked.includes(item)
@@ -50,7 +54,8 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
                     : "none",
                 }}
               >
-                {index} {item}
+                {/* {index}  */}
+                {item}
                 <div>
                   <input
                     className="checkbox-item"
@@ -66,14 +71,12 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
 
                           return [...data];
                         }
-                        console.log("previousState ", previousState);
-                        console.log("newState", [...previousState, item]);
                         return [...previousState, item];
                       })
                     }
                   />
 
-                  <button onClick={() => openDeleteModal (index)}>Delete</button>
+                  <button onClick={() => openDeleteModal(index)}>Delete</button>
                 </div>
               </li>
             ))
