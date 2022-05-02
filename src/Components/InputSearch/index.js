@@ -45,4 +45,3 @@ export default function InputSearch({ todoList, setFilteredList }) {
     </>
   );
 }
-/* Um evento onChange é disparado quando os valores são inseridos na entrada */

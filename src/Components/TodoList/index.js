@@ -2,19 +2,32 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 import "./styles.css";
 
-export default function TodoList({ todoList, setTodoList }) {
+export default function TodoList({ filteredList, todoList, setTodoList }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [checked, setChecked] = useState([]);
+  const [alertfind, setAlertFind] = useState([]);
 
   function deleteItemAtIndex() {
     let temporaryTodoListArray = [...todoList];
     let temporaryCheckedArray = [...checked];
-    const deletedTodo = todoList[selectedIndex];
+    let deletedTodo = todoList[selectedIndex];
 
     setChecked((prevChecked) =>
       prevChecked.filter((todo) => deletedTodo !== todo)
     );
+
+    const newList = todoList.filter((item) =>
+      item.toLowerCase().includes(item.toLowerCase())
+    );
+
+    setTodoList(newList);
+
+    if (newList.length === 0) {
+      setAlertFind(
+        "Found nothing with the searched term. Try changing it or add a new task"
+      );
+    }
 
     let hasInChecked =
       checked.indexOf(todoList[selectedIndex]) !== -1 &&
@@ -43,8 +56,8 @@ export default function TodoList({ todoList, setTodoList }) {
   return (
     <>
       <ul className="todo-list">
-        {todoList.length > 0
-          ? todoList.map((item, index) => (
+        {filteredList.length > 0
+          ? filteredList.map((item, index) => (
               <li
                 key={index}
                 className="todo-item"
@@ -56,6 +69,7 @@ export default function TodoList({ todoList, setTodoList }) {
               >
                 {/* {index}  */}
                 {item}
+                <p>{alertfind}</p>
                 <div>
                   <input
                     className="checkbox-item"
@@ -82,6 +96,7 @@ export default function TodoList({ todoList, setTodoList }) {
             ))
           : `No tasks to show`}
       </ul>
+
       <ReactModal
         overlayClassName="react-modal-overlay"
         className="react-modal"
