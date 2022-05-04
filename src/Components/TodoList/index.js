@@ -6,7 +6,7 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [checked, setChecked] = useState([]);
-  const [alertfind, setAlertFind] = useState([]);
+
 
   function deleteItemAtIndex() {
     let temporaryTodoListArray = [...todoList];
@@ -14,24 +14,12 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
     let deletedTodo = todoList[selectedIndex];
 
     setChecked((prevChecked) =>
-      prevChecked.filter((todo) => deletedTodo !== todo)
+    prevChecked.filter((todo) => deletedTodo !== todo)
     );
-
-    const newList = todoList.filter((item) =>
-      item.toLowerCase().includes(item.toLowerCase())
-    );
-
-    setTodoList(newList);
-
-    if (newList.length === 0) {
-      setAlertFind(
-        "Found nothing with the searched term. Try changing it or add a new task"
-      );
-    }
 
     let hasInChecked =
-      checked.indexOf(todoList[selectedIndex]) !== -1 &&
-      checked.indexOf(todoList[selectedIndex]);
+    checked.indexOf(todoList[selectedIndex]) !== -1 &&
+    checked.indexOf(todoList[selectedIndex]);
 
     temporaryTodoListArray.splice(selectedIndex, 1);
 
@@ -53,7 +41,20 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
     setIsDeleteModalOpen(false);
   }
 
+
+  if ( filteredList.length < 1 && todoList.length > 0 ) {
+    return  <h3 className="todo-list">Sorry, nothing found/no matches!</h3>
+  }
+  // Escrever console.log que me mostra que a lista filtrada esta vazia.
+  console.log('filteredList is empty?', filteredList.length < 1)
+
+
+  // Escrever segundo log que mostra que existe tarefas cadastradas.
+  console.log('todoList is not empty?', todoList.length > 0 )
+
+
   return (
+
     <>
       <ul className="todo-list">
         {filteredList.length > 0
@@ -67,9 +68,9 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
                     : "none",
                 }}
               >
-                {/* {index}  */}
+                {/* {index}   */}
                 {item}
-                <p>{alertfind}</p>
+
                 <div>
                   <input
                     className="checkbox-item"
@@ -96,7 +97,6 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
             ))
           : `No tasks to show`}
       </ul>
-
       <ReactModal
         overlayClassName="react-modal-overlay"
         className="react-modal"
@@ -108,7 +108,7 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
         }}
       >
         <div className="info-modal">
-          <h1 id="modal-title">Are you sure you want to delete this task?</h1>
+          <h3 id="modal-title">Are you sure you want to delete this task?</h3>
           <div id="modal-content" className="buttons-modal">
             <button onClick={() => deleteItemAtIndex()}>Yes</button>
             <button onClick={closeDeleteModal}>No</button>

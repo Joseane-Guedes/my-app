@@ -17,6 +17,14 @@ export default function AddToDo({ todoList, setTodoList }) {
       return;
     }
 
+
+    if (todoList.length === 0) {
+      setAlertCreate(
+        "Found nothing with the searched term. Try changing it or add a new task"
+      );
+    }
+
+
     setTodoList([...todoList, newItem]);
     setNewItem("");
     setAlertCreate("");

@@ -3,11 +3,13 @@ import { MdSearch } from "react-icons/md";
 import "./styles.css";
 
 export default function InputSearch({ todoList, setFilteredList }) {
-  const [alertfind, setAlertFind] = useState("");
+  const [alertFind, setAlertFind] = useState("");
 
   useEffect(() => {
-    setFilteredList(todoList);
+  setFilteredList(todoList);
   }, [todoList, setFilteredList]);
+
+
 
   function handleSearch(event) {
     const { value } = event.target;
@@ -23,12 +25,6 @@ export default function InputSearch({ todoList, setFilteredList }) {
     );
 
     setFilteredList(newList);
-
-    if (newList.length === 0) {
-      setAlertFind(
-        "Found nothing with the searched term. Try changing it or add a new task"
-      );
-    }
   }
 
   return (
@@ -41,7 +37,7 @@ export default function InputSearch({ todoList, setFilteredList }) {
           placeholder="Search your task..."
         />
       </div>
-      <p>{alertfind}</p>
+      <p>{alertFind}</p>
     </>
   );
 }
