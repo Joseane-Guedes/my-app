@@ -18,13 +18,6 @@ export default function AddToDo({ todoList, setTodoList }) {
     }
 
 
-    if (todoList.length === 0) {
-      setAlertCreate(
-        "Found nothing with the searched term. Try changing it or add a new task"
-      );
-    }
-
-
     setTodoList([...todoList, newItem]);
     setNewItem("");
     setAlertCreate("");
@@ -43,7 +36,6 @@ export default function AddToDo({ todoList, setTodoList }) {
       <button onClick={() => addNewItem()}> Save </button>
 
     </div>
-    <p>{alertCreate}</p>
     </>
   );
 }
