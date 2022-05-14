@@ -4,7 +4,7 @@ import "./styles.css";
 
 export default function TodoList({ filteredList, todoList, setTodoList }) {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState([]);
   const [checked, setChecked] = useState([]);
 
 
@@ -46,8 +46,8 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
     return  <h3 className="todo-list">Sorry, nothing found/no matches!</h3>
   }
   // Escrever console.log que me mostra que a lista filtrada esta vazia.
-  console.log('filteredList is empty?', filteredList.length < 1)
 
+  console.log('filteredList is empty?', filteredList.length < 1)
 
   // Escrever segundo log que mostra que existe tarefas cadastradas.
   console.log('todoList is not empty?', todoList.length > 0 )
@@ -103,7 +103,7 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
         isOpen={isDeleteModalOpen}
         onRequestClose={closeDeleteModal}
         aria={{
-          labelledby: "modal-title",
+          labelled: "modal-title",
           describedby: "modal-content",
         }}
       >

@@ -17,7 +17,6 @@ export default function AddToDo({ todoList, setTodoList }) {
       return;
     }
 
-
     setTodoList([...todoList, newItem]);
     setNewItem("");
     setAlertCreate("");
@@ -25,18 +24,17 @@ export default function AddToDo({ todoList, setTodoList }) {
 
   return (
     <>
-    <div className="new-item">
-      <input
-        className="todo-form__input"
-        placeholder="Create a new task"
-        value={newItem}
-        onChange={(event) => setNewItem(event.target.value)}
-        type="text"
-      />
-      <button onClick={() => addNewItem()}> Save </button>
-
-    </div>
+      <div className="new-item">
+        <input
+          className="todo-form__input"
+          placeholder="Create a new task"
+          value={newItem}
+          onChange={(event) => setNewItem(event.target.value)}
+          type="text"
+        />
+        <button onClick={() => addNewItem()}> Save </button>
+      </div>
+      <p>{alertCreate}</p>
     </>
   );
 }
-

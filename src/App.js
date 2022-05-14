@@ -4,7 +4,8 @@ import InputSearch from "./Components/InputSearch";
 import TodoList from "./Components/TodoList";
 import "./App.css";
 
-function App() {
+
+export default function App() {
   const [todoList, setTodoList] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
 
@@ -22,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+
