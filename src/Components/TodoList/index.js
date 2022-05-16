@@ -22,6 +22,8 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
     checked.indexOf(todoList[selectedIndex]);
 
     temporaryTodoListArray.splice(selectedIndex, 1);
+// The splice() method adds and/or removes array elements.The splice() method overwrites the original array.
+
 
     if (hasInChecked) {
       temporaryCheckedArray.splice(hasInChecked, 1);
@@ -45,11 +47,11 @@ export default function TodoList({ filteredList, todoList, setTodoList }) {
   if ( filteredList.length < 1 && todoList.length > 0 ) {
     return  <h3 className="todo-list">Sorry, nothing found/no matches!</h3>
   }
-  // Escrever console.log que me mostra que a lista filtrada esta vazia.
+
 
   console.log('filteredList is empty?', filteredList.length < 1)
 
-  // Escrever segundo log que mostra que existe tarefas cadastradas.
+
   console.log('todoList is not empty?', todoList.length > 0 )
 
 

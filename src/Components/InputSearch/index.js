@@ -9,8 +9,6 @@ export default function InputSearch({ todoList, setFilteredList }) {
   setFilteredList(todoList);
   }, [todoList, setFilteredList]);
 
-
-
   function handleSearch(event) {
     const { value } = event.target;
 
